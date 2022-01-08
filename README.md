@@ -8,7 +8,7 @@ Sign up for a service at https://www.shakebug.com
 
 ## Installation - Android
 
-### Gradle
+#### Gradle
 
 Add this line to your build.gradle file.
 
@@ -16,7 +16,7 @@ Add this line to your build.gradle file.
 implementation 'com.softnoesis.shakebug:ShakeBug:<latest-version>'
 ```
 
-### Open package having MainActivity.java file and create **ShakeBugModule.java**
+#### Open package having MainActivity.java file and create **ShakeBugModule.java**
 
 ```java
 import com.softnoesis.shakebuglibrary.ShakeBugInitialize;
@@ -54,7 +54,7 @@ class ShakeBugModule extends ReactContextBaseJavaModule implements ActivityEvent
 }
 ```
 
-### Now create **ShakeBugPackage.java**
+#### Now create **ShakeBugPackage.java**
 
 ```java
 import java.util.ArrayList;
@@ -78,7 +78,7 @@ class ShakeBugPackage implements ReactPackage {
 }
 ```
 
-### now open android/app/src/main/java/[...]/MainApplication.java You should find the getPackages() method looks like the below snippet. You just need to add shakeBugPackage to List\<ReactPackage>
+#### now open android/app/src/main/java/[...]/MainApplication.java You should find the getPackages() method looks like the below snippet. You just need to add shakeBugPackage to List\<ReactPackage>
 
 ```java
 @Override
@@ -91,7 +91,7 @@ class ShakeBugPackage implements ReactPackage {
         }
 ```
 
-### After this you just have call ShakeBugInit update App.js as shown in below image
+#### After this you just have call ShakeBugInit update App.js as shown in below image
 
 ```javascript
 import React, {useEffect} from 'react';
