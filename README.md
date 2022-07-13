@@ -38,7 +38,8 @@ class ShakeBugModule extends ReactContextBaseJavaModule implements ActivityEvent
   public void shakeBugInit() {
     final Activity activity = getCurrentActivity();
     if (activity != null) {
-      new ShakeBugInitialize(activity,"<Your Key>");
+      ShakeBug.initialize(this, "<Your Key>");
+      // Be sure to replace `<Your Key>` with your application key which given by ShakeBug website.
     }
   }
 
@@ -111,3 +112,39 @@ const App = () => {
 
 export default App;
 ```
+
+## Optional Settings
+
+1. If you want add event to any screen or activity use following methods
+
+**Java**
+```java
+ShakeBug.getInstance().addEventKey(this,"<Key>","<Key Value>"); //pass any key or value
+```
+
+**Kotlin**
+```kotlin
+ShakeBug.getInstance().addEventKey(this,"<Key>","<Key Value>") // pass any key or value
+```
+   
+2. Add the following for enabling/disabling first time tutorial screen
+
+**Java**
+```java
+ShakeBug.getInstance().showTutorialScreenFirstTime(true); // Default value True
+```
+
+**Kotlin**
+```kotlin
+ShakeBug.getInstance().showTutorialScreenFirstTime(true) // Default value True
+```
+
+## Usage
+
+Build & run your app. Once your app is running, shake your device to report a bug! Bug/Crash reports are sent directly to login panel of Shakebug.com and also notify on your registered email address.
+
+
+## Contact
+Visit on: [https://www.shakebug.com](https://www.shakebug.com)
+
+Contact us on support@shakebug.com in case of any use.
