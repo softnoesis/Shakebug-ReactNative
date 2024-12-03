@@ -6,6 +6,20 @@ Shakebug allows you to receive feedback from your beta testers or real users and
 
 Sign up for a service at https://www.shakebug.com
 
+## npm
+
+Navigate to your React Native project directory and install shakebug-react-native
+
+```groovy
+npm install shakebug-react-native
+```
+
+Or if you prefer to use Yarn instead of npm:
+
+```groovy
+yarn add shakebug-react-native
+```
+
 ## Installation - Android
 
 #### Gradle
@@ -19,99 +33,14 @@ implementation 'com.softnoesis.shakebug:ShakeBug:<latest-version>'
 #### Open package having MainActivity.java file and create **ShakeBugModule.java**
 
 ```java
-import com.softnoesis.shakebuglibrary.ShakeBugInitialize;
-
-class ShakeBugModule extends ReactContextBaseJavaModule implements ActivityEventListener {
-
-  public ShakeBugModule(ReactApplicationContext reactContext) {
-    super(reactContext);
-    reactContext.addActivityEventListener(this);
-    shakeBugInit();
-  }
-
-  @Override
-  public String getName() {
-    return "ShakeBugAndroid";
-  }
-
-  @ReactMethod
-  public void shakeBugInit() {
-    final Activity activity = getCurrentActivity();
-    if (activity != null) {
-      ShakeBug.initialize(this, "<Your Key>");
-      // Be sure to replace `<Your Key>` with your application key which given by ShakeBug website.
-    }
-  }
-
-  @Override
-  public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
-
-  }
-
-  @Override
-  public void onNewIntent(Intent intent) {
-
-  }
-}
-```
-
-#### Now create **ShakeBugPackage.java**
-
-```java
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-class ShakeBugPackage implements ReactPackage {
-
-  @Override
-  public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-    List<NativeModule> modules = new ArrayList<>();
-    modules.add(new ShakeBugModule(reactContext));
-
-    return  modules;
-  }
-
-  @Override
-  public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-    return Collections.emptyList();
-  }
-}
-```
-
-#### now open android/app/src/main/java/[...]/MainApplication.java You should find the getPackages() method looks like the below snippet. You just need to add shakeBugPackage to List\<ReactPackage>
-
-```java
+import com.softnoesis.shakebuglibrary.ShakeBug; // this
 @Override
-        protected List<ReactPackage> getPackages() {
-          @SuppressWarnings("UnnecessaryLocalVariable")
-          List<ReactPackage> packages = new PackageList(this).getPackages();
-          // Packages that cannot be autolinked yet can be added manually here, for example:
-          packages.add(new ShakeBugPackage());
-          return packages;
-        }
+    protected void onCreate(Bundle savedInstanceState) {
+       ...
+       ShakeBug.sharedInstance().initiateWithKey(this, “”); //this
+    }
 ```
 
-#### After this you just have call ShakeBugInit update App.js as shown in below image
-
-```javascript
-import React, {useEffect} from 'react';
-import {NativeModules} from 'react-native';
-
-const App = () => {
-
-  useEffect(() => {
-    NativeModules.ShakeBugAndroid.shakeBugInit()
-  }, []);
-
-  return (
-   ...
-  )
-}
-
-
-export default App;
-```
 
 ## Optional Settings
 
