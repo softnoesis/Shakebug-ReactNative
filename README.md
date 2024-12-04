@@ -27,11 +27,10 @@ yarn add shakebug-react-native
 Add this line to your build.gradle file.
 
 ```groovy
-implementation 'com.softnoesis.shakebug:ShakeBug:<latest-version>'
+implementation 'com.softnoesis.shakebug:ShakeBug:1.2.36
 ```
 
-#### Open package having MainActivity.java file and create **ShakeBugModule.java**
-
+#### Open package having MainActivity.java
 ```java
 import com.softnoesis.shakebuglibrary.ShakeBug; // this
 @Override
